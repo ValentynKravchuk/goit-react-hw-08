@@ -1,34 +1,56 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import s from "./ContactForm.module.css";
+import * as Yup from "yup";
 
-const ContactForm = (onAdd) => {
+const ContactForm = ({ onAdd }) => {
   const initialValues = {
-    username: "",
+    name: "",
     number: "",
   };
-  const handleSubmit = (values, actions, e) => {
-    console.log(values);
-    actions.resetForm();
+  const handleSubmit = (values, actions) => {
     onAdd({
-      name: e.target.elements.text.value,
-      number: e.target.elements.text.value,
+      ...values,
       id: nanoid(),
     });
+    actions.resetForm();
   };
+
+  const orderSchema = Yup.object().shape({
+    name: Yup.string().min(3).max(50).required(),
+    number: Yup.string().min(3).max(50).required(),
+  });
   return (
     <div className={s.container}>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={orderSchema}
+      >
         <Form className={s.form}>
-          <label htmlFor="" className={s.label}>
-            Name
+          <label className={s.label}>
+            <span> Name</span>
+            <Field
+              type="text"
+              name="name"
+              className={s.field}
+              placeholder="Name"
+            ></Field>
+            <ErrorMessage name="name" component="span" className={s.error} />
           </label>
-          <Field type="text" name="username" className={s.field}></Field>
-          <label htmlFor="" className={s.label}>
-            Number
+
+          <label className={s.label}>
+            <span>Number</span>
+            <Field
+              type="text"
+              name="number"
+              className={s.field}
+              placeholder="XXX-XX-XX"
+            ></Field>
+            <ErrorMessage name="name" component="span" className={s.error} />
           </label>
-          <Field type="text" name="number" className={s.field}></Field>
+
           <button type="submit" className={s.button}>
             Add contact
           </button>

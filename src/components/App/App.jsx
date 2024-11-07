@@ -6,24 +6,33 @@ import initialContacts from "../../../public/contact.json";
 import s from "./App.module.css";
 
 const App = () => {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem("contacts")) ?? initialContacts
+  );
   const [filter, setFilter] = useState("");
 
-  const addContact = (newContact) => {
-    setContacts;
+  function addContact(newContact) {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
+  }
+  const deleteContact = (contactId) => {
+    setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
+    });
   };
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
+
   const visibleContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
   return (
     <div className={s.container}>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} />
+      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );
 };

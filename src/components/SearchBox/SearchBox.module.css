@@ -1,0 +1,10 @@
+.container {
+  margin-bottom: 20px;
+}
+.text {
+  font-size: 22px;
+}
+.input {
+  outline: none;
+  width: 336px;
+}
