@@ -1,19 +1,25 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import contactsReducer from "./contactsSlice";
+import filtersReducer from "./filtersSlice";
 
-const initialState = {
-  contacts: {
-    items: [],
-  },
-  filters: {
-    name: "",
-  },
+const contactsPersistConfig = {
+  key: "contacts",
+  storage,
+  whitelist: ["items"],
 };
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+
+const persistedContactsReducer = persistReducer(
+  contactsPersistConfig,
+  contactsReducer
+);
+
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    contacts: persistedContactsReducer,
+    filters: filtersReducer,
+  },
 });
+
+export const persistor = persistStore(store);
