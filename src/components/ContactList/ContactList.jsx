@@ -2,7 +2,7 @@ import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deleteContact, fetchContacts } from "../../redux/operation";
+import { deleteContact, fetchContacts } from "../../redux/contactsOps";
 import {
   selectFilteredContacts,
   selectLoading,
