@@ -4,6 +4,9 @@ import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
 import initialContacts from "../../../public/contact.json";
 import s from "./App.module.css";
+import { Route, Routes } from "react-router-dom";
+import Layout from "../Layout";
+import { HomePage } from "../../pages/HomePage/HomePage";
 
 const App = () => {
   const [contacts, setContacts] = useState(
@@ -28,12 +31,11 @@ const App = () => {
   );
 
   return (
-    <div className={s.container}>
-      <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+      </Route>
+    </Routes>
   );
 };
 
