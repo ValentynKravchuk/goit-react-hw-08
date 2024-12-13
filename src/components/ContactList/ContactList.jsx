@@ -6,7 +6,7 @@ import { deleteContact, fetchContacts } from "../../redux/contacts/operations";
 import {
   selectFilteredContacts,
   selectLoading,
-} from "../../redux/contacts/slice";
+} from "../../redux/contacts/selectors";
 function ContactList() {
   const contacts = useSelector(selectFilteredContacts);
   const loading = useSelector(selectLoading);

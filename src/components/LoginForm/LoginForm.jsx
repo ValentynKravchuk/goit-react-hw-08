@@ -10,13 +10,13 @@ const LoginForm = () => {
         <Form>
           <Field
             type="email"
-            name="name"
+            name="email"
             className={s.field}
             placeholder="Enter email"
           />
           <Field
             type="password"
-            name="name"
+            name="password"
             className={s.field}
             placeholder="Enter password"
           />
