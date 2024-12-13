@@ -11,8 +11,18 @@ const navigation = () => {
     <div>
       <header>
         <nav className={s.nav}>
-          <NavLink className={buildLinkClass}>Home</NavLink>
-          <NavLink className={buildLinkClass}>Contacts</NavLink>
+          <NavLink to="/" className={buildLinkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/contacts" className={buildLinkClass}>
+            Contacts
+          </NavLink>
+          <NavLink to="/register" className={buildLinkClass}>
+            Register
+          </NavLink>
+          <NavLink to="/login" className={buildLinkClass}>
+            Contacts
+          </NavLink>
         </nav>
       </header>
     </div>
