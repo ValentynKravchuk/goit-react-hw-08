@@ -14,3 +14,14 @@ export const register = createAsyncThunk(
     }
   }
 );
+export const login = createAsyncThunk(
+  "auth/login",
+  async (credentials, thunkApi) => {
+    try {
+      const response = await goitApi.post("users/login", credentials);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
