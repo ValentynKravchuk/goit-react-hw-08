@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
 
@@ -21,7 +20,7 @@ const navigation = () => {
             Register
           </NavLink>
           <NavLink to="/login" className={buildLinkClass}>
-            Contacts
+            Login
           </NavLink>
         </nav>
       </header>

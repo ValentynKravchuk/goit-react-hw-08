@@ -10,14 +10,15 @@ const RegisterForm = () => {
   };
   const initialValues = {
     name: "",
-    email: " ",
+    email: "",
+    password: "",
   };
   return (
     <div>
       <h2>Register</h2>
       <Formik onSubmit={handelSubmit} initialValues={initialValues}>
         <Form>
-          <Field type="text" name="name" placeholder="Enter username" />
+          <Field type="text" name="name" placeholder="Enter name" />
           <Field type="email" name="email" placeholder="Enter email" />
           <Field type="password" name="password" placeholder="Enter password" />
           <button type="submit">Register</button>

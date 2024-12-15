@@ -1,5 +1,3 @@
-import { Field, Form, Formik } from "formik";
-import React from "react";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 const RegisterPage = () => {
