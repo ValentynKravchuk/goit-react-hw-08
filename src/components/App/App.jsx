@@ -5,7 +5,7 @@ import ContactsPage from "../../pages/ContactsPage/ContactsPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import Layout from "../layout";
+import Layout from "../Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "../../redux/auth/operations";
