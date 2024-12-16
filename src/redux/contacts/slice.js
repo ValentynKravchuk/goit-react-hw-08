@@ -4,6 +4,7 @@ import {
   addContact,
   deleteContact,
 } from "../contacts/operations.js";
+import { logout } from "../auth/operations.js";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -12,18 +13,23 @@ const contactsSlice = createSlice({
     loading: false,
     error: null,
   },
+
   extraReducers: (builder) => {
+    const initialState = { items: [], loading: false, error: null };
+
     builder
+
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
+
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
       })
       .addCase(fetchContacts.rejected, (state, action) => {
-        state.loading = false;
+        state.loading = true;
         state.error = action.payload;
       })
       .addCase(addContact.fulfilled, (state, action) => {
@@ -37,6 +43,9 @@ const contactsSlice = createSlice({
       })
       .addCase(deleteContact.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, () => {
+        return initialState;
       });
   },
 });
