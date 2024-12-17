@@ -12,3 +12,10 @@
 .active {
   color: red;
 }
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.name {
+  color: aliceblue;
+}

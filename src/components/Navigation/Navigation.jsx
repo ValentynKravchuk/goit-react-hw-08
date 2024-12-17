@@ -39,8 +39,8 @@ const Navigation = () => {
           </>
         )}
         {isLoggedIn && (
-          <div>
-            <p>Welcome,{user.name}!</p>
+          <div className={s.container}>
+            <p className={s.name}>Welcome,{user.name}!</p>
             <button onClick={handleLogout}>Logout</button>
           </div>
         )}

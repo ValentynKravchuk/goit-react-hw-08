@@ -20,7 +20,7 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
-    <div>Looding...</div>
+    <span className={s.loader}></span>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

@@ -5,6 +5,7 @@ import { login } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import * as Yup from "yup";
+import { Button, TextField } from "@mui/material";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -35,14 +36,14 @@ const LoginForm = () => {
       .required("Password is required"),
   });
   return (
-    <div>
+    <div className={s.wrapper}>
       <h2 className={s.title}>Login</h2>
       <Formik
         onSubmit={handleSubmit}
         initialValues={initialValues}
         validationSchema={validationSchema}
       >
-        <Form>
+        <Form className={s.form}>
           <Field
             type="email"
             name="email"
@@ -57,7 +58,14 @@ const LoginForm = () => {
             placeholder="Enter password"
           />{" "}
           <ErrorMessage name="password" component="span" className={s.error} />
-          <button type="submit">Login</button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            width="50px"
+          >
+            Log In
+          </Button>
         </Form>
       </Formik>
     </div>

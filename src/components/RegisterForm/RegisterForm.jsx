@@ -5,6 +5,7 @@ import { register } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import * as Yup from "yup";
+import { Button, TextField } from "@mui/material";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -44,17 +45,19 @@ const RegisterForm = () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <Field type="text" name="name" placeholder="Enter name" />{" "}
+          <TextField type="text" name="name" placeholder="Enter name" />{" "}
           <ErrorMessage name="password" component="div" className={s.error} />
-          <Field type="email" name="email" placeholder="Enter email" />{" "}
+          <TextField type="email" name="email" placeholder="Enter email" />{" "}
           <ErrorMessage name="password" component="div" className={s.error} />
-          <Field
+          <TextField
             type="password"
             name="password"
             placeholder="Enter password"
           />{" "}
           <ErrorMessage name="password" component="div" className={s.error} />
-          <button type="submit">Register</button>
+          <Button type="submit" variant="contained" color="primary">
+            Register
+          </Button>
         </Form>
       </Formik>
     </div>

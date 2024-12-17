@@ -1,11 +1,16 @@
-.fieldWrapper {
-  margin-bottom: 1rem;
+.wrapper {
+  height: auto;
+  margin: auto;
 }
-
-.field {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .error {
