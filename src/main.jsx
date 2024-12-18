@@ -9,17 +9,24 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Toaster } from "react-hot-toast";
 import { HelmetProvider } from "react-helmet-async";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <PersistGate loading={null} persistor={persistor}>
-          <HelmetProvider>
-            <App />
-            <Toaster position="top-right" reverseOrder={false} />
-          </HelmetProvider>
-        </PersistGate>
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
-);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <PersistGate loading={null} persistor={persistor}>
+            <HelmetProvider>
+              <App />
+              <Toaster
+                position="top-right"
+                reverseOrder={false}
+                toastOptions={{ duration: 4000 }}
+              />
+            </HelmetProvider>
+          </PersistGate>
+        </BrowserRouter>
+      </Provider>
+    </StrictMode>
+  );
+}

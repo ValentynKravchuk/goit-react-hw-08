@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "./Navigation/navigation";
+
+import AppBar from "./AppBar/AppBar";
 
 const Layout = () => {
   return (
-    <div>
-      <Navigation />
+    <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 16px" }}>
+      <AppBar />
       <Outlet />
     </div>
   );

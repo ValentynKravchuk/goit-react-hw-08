@@ -7,21 +7,33 @@
   border-radius: 8px;
   width: 260px;
   background-color: lightgray;
+  transition: background-color 0.3s ease;
 }
+
+.container:hover {
+  background-color: #e0e0e0;
+}
+
 .text {
   display: flex;
   gap: 6px;
 }
-.button {
-  display: flex;
-  gap: 8px;
-  cursor: pointer;
 
+.button {
+  cursor: pointer;
   color: black;
-  padding: 10px;
+  padding: 8px 12px;
   border-radius: 4px;
   margin: 0;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+.button:hover {
+  background-color: #f44336;
+  color: white;
+}
+
 .wrapper {
   display: flex;
   gap: 8px;

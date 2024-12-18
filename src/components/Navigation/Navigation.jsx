@@ -1,51 +1,44 @@
-import clsx from "clsx";
 import { NavLink } from "react-router-dom";
-import s from "./Navigation.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
-import { logout } from "../../redux/auth/operations";
-const buildLinkClass = ({ isActive }) => {
-  return clsx(s.link, isActive && s.active);
-};
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { AppBar, Toolbar, Button, Box } from "@mui/material";
+
 const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
-
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-  };
 
   return (
-    <header>
-      <nav className={s.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        {isLoggedIn && (
-          <NavLink to="/contacts" className={buildLinkClass}>
-            Contacts
-          </NavLink>
-        )}
-
-        {!isLoggedIn && (
-          <>
-            <NavLink to="/register" className={buildLinkClass}>
-              Register
-            </NavLink>
-            <NavLink to="/login" className={buildLinkClass}>
-              Login
-            </NavLink>{" "}
-          </>
-        )}
-        {isLoggedIn && (
-          <div className={s.container}>
-            <p className={s.name}>Welcome,{user.name}!</p>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
-      </nav>
-    </header>
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        <Box sx={{ flexGrow: 1, display: "flex", gap: "16px" }}>
+          <Button
+            component={NavLink}
+            to="/"
+            color="inherit"
+            sx={{
+              "&.active": { backgroundColor: "#1976d2", color: "white" },
+              "&:hover": { backgroundColor: "#1565c0" },
+            }}
+            aria-label="Go to home page"
+          >
+            Home
+          </Button>
+          {isLoggedIn && (
+            <Button
+              component={NavLink}
+              to="/contacts"
+              color="inherit"
+              sx={{
+                "&.active": { backgroundColor: "#1976d2", color: "white" },
+                "&:hover": { backgroundColor: "#1565c0" },
+              }}
+              aria-label="Go to contacts page"
+            >
+              Contacts
+            </Button>
+          )}
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

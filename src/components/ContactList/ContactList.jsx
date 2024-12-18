@@ -6,10 +6,13 @@ import { deleteContact, fetchContacts } from "../../redux/contacts/operations";
 import {
   selectFilteredContacts,
   selectLoading,
+  selectError,
 } from "../../redux/contacts/selectors";
+
 function ContactList() {
   const contacts = useSelector(selectFilteredContacts);
   const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,6 +21,10 @@ function ContactList() {
 
   if (loading) {
     return <p>Loading contacts...</p>;
+  }
+
+  if (error) {
+    return <p>Error loading contacts: {error.message}</p>;
   }
 
   if (contacts.length === 0) {

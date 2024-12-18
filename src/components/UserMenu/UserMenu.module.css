@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 10px;
+  gap: 16px;
+}
+
+.text {
+  font-size: 16px;
+  color: #333;
+}
+
+.button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1565c0;
+}
+
+.welcomeText {
+  font-size: 18px;
+  color: #1976d2;
+  font-weight: 600;
+}

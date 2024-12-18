@@ -1,0 +1,29 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}

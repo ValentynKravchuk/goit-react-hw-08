@@ -10,6 +10,7 @@ import { Button, TextField } from "@mui/material";
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = (values, options) => {
     dispatch(login(values))
       .unwrap()
@@ -23,10 +24,12 @@ const LoginForm = () => {
 
     options.resetForm();
   };
+
   const initialValues = {
     email: "",
     password: "",
   };
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email address")
@@ -35,35 +38,49 @@ const LoginForm = () => {
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
   });
+
   return (
     <div className={s.wrapper}>
-      <h2 className={s.title}>Login</h2>
       <Formik
         onSubmit={handleSubmit}
         initialValues={initialValues}
         validationSchema={validationSchema}
       >
         <Form className={s.form}>
+          <h2 className={s.title}>Login</h2>
           <Field
-            type="email"
             name="email"
-            className={s.field}
-            placeholder="Enter email"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Email"
+                type="email"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                error={!!field.value && !!field.touched && !!field.error}
+                helperText={<ErrorMessage name="email" />}
+              />
+            )}
           />
-          <ErrorMessage name="email" component="span" className={s.error} />
+
           <Field
-            type="password"
             name="password"
-            className={s.field}
-            placeholder="Enter password"
-          />{" "}
-          <ErrorMessage name="password" component="span" className={s.error} />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            width="50px"
-          >
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Password"
+                type="password"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                error={!!field.value && !!field.touched && !!field.error}
+                helperText={<ErrorMessage name="password" />}
+              />
+            )}
+          />
+
+          <Button type="submit" variant="contained" color="primary" fullWidth>
             Log In
           </Button>
         </Form>

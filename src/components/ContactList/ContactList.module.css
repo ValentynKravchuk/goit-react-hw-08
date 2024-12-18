@@ -1,9 +1,21 @@
-.conatiner {
+.container {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
 }
+
 .list {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
+
 .item {
+  flex-basis: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  list-style-type: none;
+  box-sizing: border-box;
 }
