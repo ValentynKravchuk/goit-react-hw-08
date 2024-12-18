@@ -3,11 +3,7 @@ import { Button, Box } from "@mui/material";
 
 const AuthNav = () => {
   return (
-    <Box
-      display="flex"
-      gap={2}
-      sx={{ flexDirection: { xs: "column", sm: "row" } }}
-    >
+    <Box display="flex" gap={2} justifyContent="end">
       <Button
         component={NavLink}
         to="/register"

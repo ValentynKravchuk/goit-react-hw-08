@@ -1,5 +1,6 @@
 import { Box, Typography, Container } from "@mui/material";
 import image from "../../img/consejos-organizar-agenda-contactos-1200x900.webp";
+import DocumentTitle from "../../components/DocumentTitle";
 
 export const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ export const HomePage = () => {
         justifyContent: "center",
       }}
     >
+      <DocumentTitle>Home</DocumentTitle>
       <Box textAlign="center">
         <Typography
           variant="h1"
