@@ -28,7 +28,7 @@ function ContactList() {
   }
 
   if (contacts.length === 0) {
-    return <p>No contacts found.</p>;
+    return <p className={s.textNotFound}>Not contacts found!</p>;
   }
 
   return (

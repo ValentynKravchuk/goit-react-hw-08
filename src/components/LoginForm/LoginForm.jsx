@@ -46,44 +46,46 @@ const LoginForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
       >
-        <Form className={s.form}>
-          <h2 className={s.title}>Login</h2>
-          <Field
-            name="email"
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Email"
-                type="email"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                error={!!field.value && !!field.touched && !!field.error}
-                helperText={<ErrorMessage name="email" />}
-              />
-            )}
-          />
+        {({ handleChange, handleBlur, values, errors, touched }) => (
+          <Form className={s.form}>
+            <h2 className={s.title}>Login</h2>
+            <Field
+              name="email"
+              as={TextField}
+              fullWidth
+              label="Email"
+              variant="outlined"
+              required
+              type="email"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.email}
+              error={touched.email && Boolean(errors.email)}
+              helperText={<ErrorMessage name="email" />}
+              style={{ marginBottom: "16px" }}
+            />
 
-          <Field
-            name="password"
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Password"
-                type="password"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                error={!!field.value && !!field.touched && !!field.error}
-                helperText={<ErrorMessage name="password" />}
-              />
-            )}
-          />
+            <Field
+              name="password"
+              as={TextField}
+              fullWidth
+              label="Password"
+              variant="outlined"
+              required
+              type="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              error={touched.password && Boolean(errors.password)}
+              helperText={<ErrorMessage name="password" />}
+              style={{ marginBottom: "16px" }}
+            />
 
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Log In
-          </Button>
-        </Form>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Log In
+            </Button>
+          </Form>
+        )}
       </Formik>
     </div>
   );
